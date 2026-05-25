@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>PC Parts</h1>
+<div class="threecolum">
+    {% for part in results %}
+    <!-- then the name then the image -->
+     <h1>{{ part[1] }} {{ part[2] }}</h1>
+     <img src="{{ part[3] }}" alt="{{ part[2]}}">
+    </a> 
+    {% endfor %}
+</div>
+{% endblock %}
