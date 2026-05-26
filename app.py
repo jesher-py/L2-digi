@@ -23,13 +23,14 @@ def query_db(sql, args=(), one=False):
 
 # routes go here
 @app.route('/')
-def index():
+def home():
     # home page- will display all the PC parts in the database
+    # query to select all the PC parts from the database, name, brand, category and price
 
-    sql = """ SELECT * FROM "PC-parts" """
+    sql = """ SELECT id, name, brand, category, price, imgURL FROM "PC-parts" """
 
     results = query_db(sql)
-    return render_template('index.html',results=results)
+    return render_template('home.html',results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)

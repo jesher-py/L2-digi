@@ -5,9 +5,9 @@
 <div class="threecolum">
     {% for part in results %}
     <!-- then the name then the image -->
-     <h1>{{ part[1] }} {{ part[2] }}</h1>
-     <img src="{{ part[3] }}" alt="{{ part[2]}}">
-    </a> 
+     <h1> {{ part[1] }} </h1>
+     <h2>{{ part[2] }} | {{ part[3] }} | ${{ part[4] }}</h2>
+     <img src="{{ part[7] }}" alt="{{ part[1]}}">
     {% endfor %}
 </div>
 {% endblock %}
