@@ -1,0 +1,20 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    gap: 20px;
+    list-style: none
+}
+
+nav {
+    margin-right: 550px;
+}
+
+nav ul li a {
+    color: rgb(19, 18, 18);
+    text-decoration: none;
+}
