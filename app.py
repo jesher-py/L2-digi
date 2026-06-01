@@ -21,6 +21,7 @@ def query_db(sql, args=(), one=False):
     db.close()
     return (results[0] if results else None) if one else results
 
+
 # routes go here
 @app.route('/')
 def home():
@@ -32,5 +33,50 @@ def home():
     results = query_db(sql)
     return render_template('home.html',results=results)
 
+@app.route('/parts/cpu')
+def cpu():
+    # CPU page- will display all the CPUs in the database
+    # query to select all the CPUs from the database, name, brand and price
+
+    sql = """ 
+    SELECT name, brand, price, imgURL 
+    FROM "PC-parts" 
+    WHERE category = 'CPU'
+    """
+
+    results = query_db(sql)
+    return render_template('parts.html',results=results)
+
+
+    
+
+@app.route('/parts/gpu')
+def gpu():
+    # GPU page- will display all the GPUs in the database
+    # query to select all the GPUs from the database, name, brand and price
+
+    sql = """ 
+    SELECT name, brand, price, imgURL 
+    FROM "PC-parts" 
+    WHERE category = 'GPU' 
+    """
+
+    results = query_db(sql)
+    return render_template('parts.html',results=results)
+
+
+
+@app.route('/parts/ram')
+def ram():
+    # RAM page- will display all the RAMs in the database
+    # query to select all the RAMs from the database, name, brand and price
+
+    sql = """ SELECT name, brand, price, imgURL FROM "PC-parts" WHERE category = 'RAM' """
+    results = query_db(sql)
+    return render_template('parts.html',results=results)
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
