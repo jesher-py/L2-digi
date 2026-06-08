@@ -93,7 +93,7 @@ def detail(id):
     # query to select the details of a specific part from the database, name, brand, price and image, specifications, and description
 
         sql = """ 
-        SELECT *
+        SELECT name, brand, category, price, specs, description, price_tier, rating
         FROM "PC-parts" 
         WHERE id = ? 
         """
