@@ -100,6 +100,15 @@ def detail(id):
         results = query_db(sql, [id], one=True)
         return render_template('detail.html',part=results)
     
+@app.route('/about')
+def about():
+    # about page- will display information about the website and the creator
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():  
+    # contact page- will display contact information for the creator
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
