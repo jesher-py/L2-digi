@@ -1,10 +1,33 @@
 {%extends "base.html" %}
 {% block content %}
     <h1>Parts</h1>
+<!-- table to display all the parts, with the id, name, brand, price, category and release year -->
+ <table>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Release year</th>
+        </tr>
+
     {% for part in results %}
+
+        <tr>
+            <td>{{ part[0] }}</td>
+            <td><a href="/detail/{{ part[0] }}" class="part">{{ part[1] }}</a></td>
+            <td>{{ part[2] }}</td>
+            <td>${{ part[3] }}</td>
+            <td>{{ part[4] }}</td>
+            <td>{{ part[5] }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+
+            
+            
         <!-- then the name, brand, price then the image -->
-        <h1> {{ part[0] }} </h1>
-        <h2>{{ part[1] }} | ${{ part[2] }}</h2>
-        <img src="{{ url_for('static', filename=part[3]) }}" alt="{{ part[0]}}">
-    {% endfor %}
+
+
 {% endblock %}

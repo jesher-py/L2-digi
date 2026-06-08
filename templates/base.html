@@ -19,11 +19,22 @@
 
         <!-- Navigation Bar/routes -->
          <nav>
+            <!-- list of navigation items -->
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
-                <li><a href="/categories">Categories</a></li>
+                <li><a href="/parts">All Parts</a></li>
+                <li class="dropdown"> <!-- Dropdown menu for categories -->
+                    <a href="#">categories</a>
+                    <div class="dropdown-content">
+                        <a href="/parts/cpu">CPU</a>
+                        <a href="/parts/gpu">GPU</a>
+                        <a href="/parts/ram">RAM</a>
+                    </div>    
+
+
+                </li>
                 
             
             </ul>

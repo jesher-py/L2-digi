@@ -11,10 +11,54 @@ nav ul{
 }
 
 nav {
-    margin-right: 550px;
+    margin-right: 350px;
 }
 
 nav ul li a {
     color: rgb(19, 18, 18);
     text-decoration: none;
 }
+
+.dropdown { 
+    position: relative; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.part {
+    color : black;
+    text-decoration: none;
+}
+body {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+    

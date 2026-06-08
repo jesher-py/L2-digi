@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+<!-- Display part information here -->
+ <!--two columns, one for the image and one for the details -->
+ <div class="detail">
+    <div class="detail-image">
+        <img src="{{ url_for('static', filename=part[4]) }}" alt="{{ part[0]}}">
+    </div>
+    <div class="detail-info">
+        <h1>{{ part[0] }}</h1>
+        <h2>{{ part[1] }} | {{ part[2] }} | ${{ part[3] }}</h2>
+        <h3>Specifications</h3>
+        <p>{{ part[5] }}</p>
+        <h3>Description</h3>
+        <p>{{ part[6] }}</p>
+
+        <h2>reviews</h2>
+        <h3> {{ part[7] }} | {{ part[8] }}</h3>
+    </div>
+    </div>
+{% endblock %}
