@@ -1,14 +1,11 @@
 {% extends "base.html" %}
-{% block content %}
-    <h1>Parts</h1>
-        <form class="search-bar" method="post" action="/search">
-            <label for="search">Search for a part:</label>
-            <input type="text" id="search" name="search">
-           <input  type="submit" value="Search">
-        </form>
 
-    </div>
-<!-- table to display all the parts, with the id, name, brand, price, category and release year -->
+{% block content %}
+    <h1>Search Results</h1>
+    <p>Showing results for "{{ query }}":</p>
+    <!-- Display search results here in a loop -->
+
+    <!-- table to display all the parts, with the id, name, brand, price, category and release year -->
  <table>
         <tr>
             <th>id</th>
@@ -28,7 +25,11 @@
             <td>${{ part[3] }}</td>
             <td>{{ part[4] }}</td>
             <td>{{ part[5] }}</td>
-            {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="6">No results found.</td>
+        </tr>
+    {% endfor %}
         </tr>
     </table>
 {% endblock %}

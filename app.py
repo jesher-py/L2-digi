@@ -1,5 +1,5 @@
 # import flask and other necessary libraries
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, request
 import sqlite3
 
 DATABASE = 'database.db'
@@ -25,11 +25,13 @@ def query_db(sql, args=(), one=False):
 # routes go here
 @app.route('/')
 def home():
-    # home page- will display all the PC parts in the database
-    # query to select all the PC parts from the database, name, brand, category and price
-
-    sql = """ SELECT name, brand, category, price, imgURL FROM "PC-parts" """
-
+    # home page- will display th latest PC parts in the database, name, brand, price and image
+    sql = """ 
+    SELECT name, brand, category, price, imgURL
+    FROM "PC-parts" 
+    WHERE rating >= 4.5
+    ORDER BY releaseYear DESC
+    """
     results = query_db(sql)
     return render_template('home.html',results=results)
 
@@ -59,9 +61,6 @@ def cpu():
     results = query_db(sql)
     return render_template('parts.html',results=results)
 
-
-    
-
 @app.route('/parts/gpu')
 def gpu():
     # GPU page- will display all the GPUs in the database
@@ -76,8 +75,6 @@ def gpu():
     results = query_db(sql)
     return render_template('parts.html',results=results)
 
-
-
 @app.route('/parts/ram')
 def ram():
     # RAM page- will display all the RAMs in the database
@@ -86,6 +83,23 @@ def ram():
     sql = """ SELECT id, name, brand, price, category, releaseYear FROM "PC-parts" WHERE category = 'RAM' """
     results = query_db(sql)
     return render_template('parts.html',results=results)
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    # search page- will display search results based on user input in the search bar
+    results = []
+    if request.method == 'POST':
+        search_term = request.form['search']
+        sql = """
+        SELECT id, name, brand, price, category, releaseYear
+        FROM "PC-parts"
+        WHERE name LIKE ?
+        """
+        results = query_db(sql, ['%' + search_term + '%'])
+    return render_template('search.html', results=results)
+
+
 
 @app.route('/detail/<int:id>')
 def detail(id):
@@ -109,6 +123,7 @@ def about():
 def contact():  
     # contact page- will display contact information for the creator
     return render_template('contact.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

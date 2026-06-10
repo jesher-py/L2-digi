@@ -62,3 +62,7 @@ th, td {
     text-align: left;
 }
     
+.search-bar {
+    margin-bottom: 20px;
+    display: inline-block;
+}
