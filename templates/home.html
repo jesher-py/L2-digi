@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>PC Parts</h1>
+
 {% for part in results %}
 <!-- then the name then the image -->
- <h1> {{ part[0] }} </h1>
- <h2>{{ part[1] }} | {{ part[2] }} | ${{ part[3] }}</h2>
- <img src="{{ url_for('static', filename=part[4]) }}" alt="{{ part[0]}}">
+ <div class="top-parts">
+    <h1> {{ part[0] }} </h1>
+    <h2>{{ part[1] }} | {{ part[2] }} | ${{ part[3] }}</h2>
+    <img src="{{ url_for('static', filename=part[4]) }}" alt="{{ part[0]}}">
+ </div>
  
 {% endfor %}
 {% endblock %}

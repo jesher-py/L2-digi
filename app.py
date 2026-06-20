@@ -29,7 +29,7 @@ def home():
     sql = """ 
     SELECT name, brand, category, price, imgURL
     FROM "PC-parts" 
-    WHERE rating >= 4.5
+    WHERE rating >= 5
     ORDER BY releaseYear DESC
     """
     results = query_db(sql)
