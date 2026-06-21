@@ -76,5 +76,5 @@ th, td {
     
 .search-bar {
     margin-bottom: 20px;
-    display: inline-block;
+    display: block;
 }

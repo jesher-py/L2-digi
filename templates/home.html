@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+ <form class="search-bar" method="post" action="/search">
+            <label for="search">Search for a part:</label>
+            <input type="text" id="search" name="search">
+           <input  type="submit" value="Search">
+        </form>
+
+
 
 {% for part in results %}
 <!-- then the name then the image -->
