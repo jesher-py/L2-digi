@@ -78,3 +78,10 @@ th, td {
     margin-bottom: 20px;
     display: block;
 }
+
+.detail-info, .detail-specs, .detail-description, .detail-other {
+    display: inline-block;
+    margin-right: 100px;
+    padding: 10px;
+    width: 350px;
+}

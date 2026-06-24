@@ -27,8 +27,9 @@ def query_db(sql, args=(), one=False):
 def home():
     # home page- will display th latest PC parts in the database, name, brand, price and image
     sql = """ 
-    SELECT name, brand, category, price, imgURL
+    SELECT "PC-parts".name, "manufacturers".name, category, price, imgURL
     FROM "PC-parts" 
+    join manufacturers ON "PC-parts".manufacturers_id
     WHERE rating >= 5
     ORDER BY releaseYear DESC
     """
