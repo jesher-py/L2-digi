@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
-
 {% block content %}
- <form class="search-bar" method="post" action="/search">
+
+<div class="slogan">
+   <h1>Find the best <br> PC part, every time</h1>
+</div>
+
+ <form class="home-search-bar" method="post" action="/search">
             <label for="search">Search for a part:</label>
             <input type="text" id="search" name="search">
            <input  type="submit" value="Search">

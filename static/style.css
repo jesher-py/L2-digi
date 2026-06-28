@@ -1,7 +1,9 @@
+/* header, navigation bar, and dropdown menu styles */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid black;
 }
 
 nav ul{
@@ -42,6 +44,7 @@ nav ul li a {
     display: block;
 }
 
+/* dispayed parts on the home page */
 .top-parts {
     display: inline-block;
     margin: 20px;
@@ -54,10 +57,6 @@ img {
     width: 200px;
 }
 
-.part {
-    color : black;
-    text-decoration: none;
-}
 body {
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -68,20 +67,49 @@ table {
     width: 100%;
 }
 
+/* Style the table header and cells */
 th, td {
     border: 1px solid black;
     padding: 8px;
     text-align: left;
 }
     
+/* Style the search input field */
+
 .search-bar {
     margin-bottom: 20px;
-    display: block;
+    margin-top: 60px;
 }
 
+label{
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+input[type="text"] {
+    width: 500px;
+    height: 45px;
+    font-size: 20px;
+    vertical-align: top;
+}
+
+input[type="submit"] {
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+}
+
+/* Style the detail page information sections */
 .detail-info, .detail-specs, .detail-description, .detail-other {
     display: inline-block;
     margin-right: 100px;
     padding: 10px;
     width: 350px;
+}
+
+.slogan {
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 10px;
 }
