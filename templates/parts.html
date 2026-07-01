@@ -9,27 +9,17 @@
         </form>
 
     </div>
-<!-- table to display all the parts, with the id, name, brand, price, category and release year -->
- <table>
-        <tr>
-            <th>id</th>
-            <th>Name</th>
-            <th>Brand</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Release year</th>
-        </tr>
+<!-- table to display all the parts, with the name, brand, price, category and release year -->
 
     {% for part in results %}
-
-        <tr>
-            <td>{{ part[0] }}</td>
-            <td><a href="/detail/{{ part[0] }}" class="part">{{ part[1] }}</a></td>
-            <td>{{ part[2] }}</td>
-            <td>${{ part[3] }}</td>
-            <td>{{ part[4] }}</td>
-            <td>{{ part[5] }}</td>
-            {% endfor %}
-        </tr>
-    </table>
+    <a href="/detail/{{ part[0] }}" class="part-link">
+        <div class="carded-parts">
+            <img src="{{ url_for('static', filename=part[1]) }}" alt="{{ part[2] }}">
+            <h1>{{ part[2] }}</h1>
+            <h2>{{ part[3] }} | {{ part[4] }} | ${{ part[5] }}</h2>
+        </div>
+    </a>
+    {% else %}
+        <p>No parts found.</p>
+    {% endfor %}
 {% endblock %}

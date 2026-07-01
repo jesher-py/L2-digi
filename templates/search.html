@@ -19,10 +19,9 @@
     {% for part in results %}
 
         <tr>
-            <td>{{ part[0] }}</td>
             <td><a href="/detail/{{ part[0] }}" class="part">{{ part[1] }}</a></td>
-            <td>{{ part[2] }}</td>
-            <td>${{ part[3] }}</td>
+            <td>${{ part[2] }}</td>
+            <td>{{ part[3] }}</td>
             <td>{{ part[4] }}</td>
             <td>{{ part[5] }}</td>
     {% else %}

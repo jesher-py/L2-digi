@@ -27,8 +27,8 @@ def query_db(sql, args=(), one=False):
 def home():
     # home page- will display th latest PC parts in the database, name, brand, price and image
     sql = """ 
-    SELECT "PC-parts".name, "manufacturers".name as brand, category, price, imgURL
-    FROM "PC-parts" 
+    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+    FROM "PC-parts"
     join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
     WHERE rating >= 5
     ORDER BY releaseYear DESC
@@ -41,8 +41,9 @@ def parts():
     # parts page- will display all the PC parts in the database
     # query to select all the PC parts from the database, name, brand, category and price
 
-    sql = """ select id, name, brand, price, category, releaseYear
-             FROM "PC-parts" """
+    sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+             FROM "PC-parts" 
+             join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id """
 
     results = query_db(sql)
     return render_template('parts.html',results=results)
@@ -53,10 +54,10 @@ def cpu():
     # CPU page- will display all the CPUs in the database
     # query to select all the CPUs from the database, id, name, brand, price, category and release year
 
-    sql = """ 
-    SELECT id, name, brand, price, category, releaseYear
-    FROM "PC-parts" 
-    WHERE category = 'CPU'
+    sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+             FROM "PC-parts" 
+             join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
+             WHERE category = 'CPU'
     """
 
     results = query_db(sql)
@@ -68,8 +69,9 @@ def gpu():
     # query to select all the GPUs from the database, id, name, brand, price, category and release year
 
     sql = """ 
-    SELECT id, name, brand, price, category, releaseYear
+    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
     FROM "PC-parts" 
+    join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
     WHERE category = 'GPU' 
     """
 
@@ -81,7 +83,10 @@ def ram():
     # RAM page- will display all the RAMs in the database
     # query to select all the RAMs from the database, id, name, brand, price, category and release year
 
-    sql = """ SELECT id, name, brand, price, category, releaseYear FROM "PC-parts" WHERE category = 'RAM' """
+    sql = """ 
+    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+    FROM "PC-parts" 
+    join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id WHERE category = 'RAM' """
     results = query_db(sql)
     return render_template('parts.html',results=results)
 
@@ -93,9 +98,10 @@ def search():
     if request.method == 'POST':
         search_term = request.form['search']
         sql = """
-        SELECT id, name, brand, price, category, releaseYear
+        SELECT "PC-parts".id, "PC-parts".name, "manufacturers".name as brand, price, category, releaseYear
         FROM "PC-parts"
-        WHERE name LIKE ?
+        join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
+        WHERE "PC-parts".name LIKE ?
         """
         results = query_db(sql, ['%' + search_term + '%'])
     return render_template('search.html', results=results)
@@ -108,9 +114,10 @@ def detail(id):
     # query to select the details of a specific part from the database, name, brand, price and image, specifications, and description
 
         sql = """ 
-        SELECT name, brand, category, price, specs, description, price_tier, rating
+        SELECT "PC-parts".name, "manufacturers".name as brand, category, price, specs, description, price_tier, rating
         FROM "PC-parts" 
-        WHERE id = ? 
+        join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
+        WHERE "PC-parts".id = ? 
         """
         results = query_db(sql, [id], one=True)
         return render_template('detail.html',part=results)

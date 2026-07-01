@@ -55,6 +55,8 @@ nav ul li a {
 
 img {
     width: 200px;
+    height: 200px;
+    object-fit: contain;
 }
 
 body {
@@ -62,22 +64,11 @@ body {
     color: rgb(0, 0, 0);
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-/* Style the table header and cells */
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-}
     
 /* Style the search input field */
 
 .search-bar {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 60px;
 }
 
@@ -100,11 +91,11 @@ input[type="submit"] {
 }
 
 /* Style the detail page information sections */
-.detail-info, .detail-specs, .detail-description, .detail-other {
+.detail-info {
     display: inline-block;
-    margin-right: 100px;
     padding: 10px;
-    width: 350px;
+    margin-bottom: 10px;
+    width: 400px;
 }
 
 .slogan {
@@ -112,4 +103,17 @@ input[type="submit"] {
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 10px;
+}
+
+.carded-parts {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid black;
+    width: 250px;
+    height: 380px;
+    object-fit: cover;
 }
