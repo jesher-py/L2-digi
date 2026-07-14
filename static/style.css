@@ -44,15 +44,6 @@ nav ul li a {
     display: block;
 }
 
-/* dispayed parts on the home page */
-.top-parts {
-    display: inline-block;
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid black;
-    width: 250px;
-}
-
 img {
     width: 200px;
     height: 200px;
@@ -116,4 +107,9 @@ input[type="submit"] {
     width: 250px;
     height: 380px;
     object-fit: cover;
+    vertical-align: top;
+}
+
+.filter{
+    display: inline-block;
 }

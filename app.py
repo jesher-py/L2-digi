@@ -38,14 +38,29 @@ def home():
 
 @app.route('/parts')
 def parts():
+
+    #getting values from forms and passing them to the query
+    brand = request.args.get('brand')
+    price_point = request.args.get('price_tier')
+
     # parts page- will display all the PC parts in the database
     # query to select all the PC parts from the database, name, brand, category and price
-
     sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
              FROM "PC-parts" 
-             join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id """
+             join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id 
+             WHERE 1=1"""
+    
 
-    results = query_db(sql)
+    # list to hold the values for the query
+    parameters = []
+    if brand:
+        sql += " AND manufacturers.name = ?"
+        parameters.append(brand)
+    if price_point:
+       sql += " AND price_tier = ?"
+       parameters.append(price_point)
+       
+    results = query_db(sql, tuple(parameters))
     return render_template('parts.html',results=results)
 
 

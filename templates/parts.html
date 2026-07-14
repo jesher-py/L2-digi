@@ -9,7 +9,30 @@
         </form>
 
     </div>
-<!-- table to display all the parts, with the name, brand, price, category and release year -->
+
+<!-- filter options using form-->
+ <form class="filter-options" method="get" action="/parts">
+    <h2>Filter Options</h2>
+    <select name="brand">
+        <option value="">All Brands</option>
+        <option value="amd">AMD</option>
+        <option value="intel">Intel</option>
+        <option value="nvidia">NVIDIA</option>
+        <option value="corsair">Corsair</option>
+        <option value="kingston">Kingston</option>
+        <option value="gigabyte">Gigabyte</option>
+    </select>
+    
+    <select name="price_tier">
+        <option value="">All Price Points</option>
+        <option value="1">Budget</option>
+        <option value="2">Mid-Range</option>
+        <option value="3">High-End</option>
+    </select>
+
+    <input type="submit" value="search">
+ </form>
+<!-- for loop to display all the parts, with the name, brand, price, category -->
 
     {% for part in results %}
     <a href="/detail/{{ part[0] }}" class="part-link">
