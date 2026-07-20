@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Parts</h1>
+    <h1>All Parts</h1>
     <!-- search bar -->
         <form class="search-bar" method="post" action="/search">
             <label for="search">Search for a part:</label>
@@ -12,7 +12,11 @@
 
 <!-- filter options using form-->
  <form class="filter-options" method="get" action="/parts">
-    <h2>Filter Options</h2>
+    <h2>Filters</h2>
+    
+
+    <div class="filter-brand">
+    <label for="filter-brand">Brand:</label>
     <select name="brand">
         <option value="">All Brands</option>
         <option value="amd">AMD</option>
@@ -22,15 +26,19 @@
         <option value="kingston">Kingston</option>
         <option value="gigabyte">Gigabyte</option>
     </select>
-    
+    </div>
+
+    <div class="filter-price-tier">
+    <label for="filter-price_tier">Price Tier:</label>
     <select name="price_tier">
         <option value="">All Price Points</option>
         <option value="1">Budget</option>
         <option value="2">Mid-Range</option>
         <option value="3">High-End</option>
     </select>
+    </div>
 
-    <input type="submit" value="search">
+    <input class="search filter" type="submit" value="filter results">
  </form>
 <!-- for loop to display all the parts, with the name, brand, price, category -->
 

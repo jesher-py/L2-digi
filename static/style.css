@@ -81,9 +81,19 @@ input[type="submit"] {
     font-size: 30px;
 }
 
+select {
+    display: inline-block;
+    width: 160px;
+    height: 50px;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 /* Style the detail page information sections */
 .detail-info {
     display: inline-block;
+    vertical-align: top;
     padding: 10px;
     margin-bottom: 10px;
     width: 400px;
@@ -110,6 +120,10 @@ input[type="submit"] {
     vertical-align: top;
 }
 
-.filter{
-    display: inline-block;
+.filter-options {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 40px;
 }
+
+

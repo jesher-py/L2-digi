@@ -113,7 +113,7 @@ def search():
     if request.method == 'POST':
         search_term = request.form['search']
         sql = """
-        SELECT "PC-parts".id, "PC-parts".name, "manufacturers".name as brand, price, category, releaseYear
+        SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
         FROM "PC-parts"
         join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
         WHERE "PC-parts".name LIKE ?
@@ -129,7 +129,7 @@ def detail(id):
     # query to select the details of a specific part from the database, name, brand, price and image, specifications, and description
 
         sql = """ 
-        SELECT "PC-parts".name, "manufacturers".name as brand, category, price, specs, description, price_tier, rating
+        SELECT "PC-parts".name, "manufacturers".name as brand, category, price, specs, description, price_tier, rating, releaseYear, imgURL, stockQuantity
         FROM "PC-parts" 
         join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
         WHERE "PC-parts".id = ? 
