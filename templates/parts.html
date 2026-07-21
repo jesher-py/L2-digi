@@ -10,10 +10,23 @@
 
     </div>
 
+
+    
+
 <!-- filter options using form-->
  <form class="filter-options" method="get" action="/parts">
     <h2>Filters</h2>
     
+     <div class="filter-category">
+    <label for="filter-category">Category:</label>
+    <select name="category">
+        <option value="">All categories</option>
+        <option value="CPU">CPU</option>
+        <option value="GPU">GPU</option>
+        <option value="RAM">RAM</option>
+       
+    </select>
+    </div>
 
     <div class="filter-brand">
     <label for="filter-brand">Brand:</label>
@@ -40,6 +53,8 @@
 
     <input class="search filter" type="submit" value="filter results">
  </form>
+
+
 <!-- for loop to display all the parts, with the name, brand, price, category -->
 
     {% for part in results %}

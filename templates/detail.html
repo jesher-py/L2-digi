@@ -3,26 +3,27 @@
 <!-- Display part information here -->
  <!--two columns, one for the image and one for the details -->
  <div class="detail">
-    <div class="detail-info">
-        <img src="{{ url_for('static', filename=part[9]) }}" alt="{{ part[0]}}">
-        <!-- part details name, brand,category, price, specifications, and description -->
-        <h1>{{ part[0] }}</h1>
-        <h1>by {{ part[1] }}</h1>
-        <h2> {{ part[2] }} | ${{ part[3] }}</h2>
-    </div>
-    
-    <div class="detail-info">
-        <h2>other stuff</h2>
-        <h2>Release Year: {{ part[8] }}</h2>
-        <h1>Stock Quantity: {{ part[10] }}</h1>
+     
+     <div class="detail-info">
+        <img class="part-image" src="{{ url_for('static', filename=part[9]) }}" alt="{{ part[0]}}">
+        <h2>Specifications</h2>
+        <h3>Release Year: {{ part[8] }}</h3>
         <h3> price tier: {{ part[6] }} </h3>
         <h3> rating: {{ part[7] }}</h3>
-        
-        <h3>Specifications</h3>
         <p>{{ part[4] }}</p>
-
+        
+        <h3>Compatible with: {{ part[11] }}</h3>
         <h3>Description</h3>
         <p>{{ part[5] }}</p>
+    </div>
+    
+    <!-- second column for the details: name, brand, category, price and stock -->
+    <div class="detail-info">
+        <h1>{{ part[0] }}</h1>
+        <h1>by {{ part[1] }}</h1>
+        <h2> {{ part[2] }}</h2> 
+        <h2> ${{ part[3] }}</h2>
+        <h2>Stock Quantity: {{ part[10] }}</h2>
     </div>
 </div>
 {% endblock %}

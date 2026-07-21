@@ -91,12 +91,18 @@ select {
 }
 
 /* Style the detail page information sections */
-.detail-info {
+.detail-info{
     display: inline-block;
     vertical-align: top;
     padding: 10px;
     margin-bottom: 10px;
-    width: 400px;
+}
+
+.part-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 50px;
 }
 
 .slogan {

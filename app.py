@@ -129,7 +129,7 @@ def detail(id):
     # query to select the details of a specific part from the database, name, brand, price and image, specifications, and description
 
         sql = """ 
-        SELECT "PC-parts".name, "manufacturers".name as brand, category, price, specs, description, price_tier, rating, releaseYear, imgURL, stockQuantity
+        SELECT "PC-parts".name, "manufacturers".name as brand, category, price, specs, description, price_tier, rating, releaseYear, imgURL, stockQuantity, compatibility
         FROM "PC-parts" 
         join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
         WHERE "PC-parts".id = ? 
