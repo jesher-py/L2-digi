@@ -6,6 +6,11 @@ header {
     border-bottom: 1px solid black;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
 nav ul{
     display: flex;
     gap: 20px;
@@ -102,7 +107,7 @@ select {
     width: 200px;
     height: 200px;
     object-fit: contain;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
 
 .slogan {
