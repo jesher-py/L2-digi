@@ -138,3 +138,14 @@ select {
 }
 
 
+
+.view-all-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    margin-top: 20px;
+}

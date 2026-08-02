@@ -5,6 +5,8 @@
    <h1>Find the best <br> PC part, every time</h1>
 </div>
 
+<a class="view-all-button" href="/parts">View All Parts</a>
+
  <form class="home-search-bar" method="post" action="/search">
             <label for="search">Search for a part:</label>
             <input type="text" id="search" name="search">
@@ -21,6 +23,8 @@
             <h2>{{ part[3] }} | {{ part[4] }} | ${{ part[5] }}</h2>
         </div>
     </a>
+
+
  
  
 {% endfor %}

@@ -42,6 +42,7 @@ def parts():
     #getting values from forms and passing them to the query
     brand = request.args.get('brand')
     price_point = request.args.get('price_tier')
+    category = request.args.get('category')
 
     # parts page- will display all the PC parts in the database
     # query to select all the PC parts from the database, name, brand, category and price
@@ -59,9 +60,15 @@ def parts():
     if price_point:
        sql += " AND price_tier = ?"
        parameters.append(price_point)
-       
+
+    if category:
+        sql += " AND category = ?"
+        parameters.append(category)
+
     results = query_db(sql, tuple(parameters))
     return render_template('parts.html',results=results)
+
+
 
 
 @app.route('/parts/cpu')
