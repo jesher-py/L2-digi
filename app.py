@@ -43,6 +43,7 @@ def parts():
     brand = request.args.get('brand')
     price_point = request.args.get('price_tier')
     category = request.args.get('category')
+    sort = request.args.get('sort')
 
     # parts page- will display all the PC parts in the database
     # query to select all the PC parts from the database, name, brand, category and price
@@ -54,6 +55,8 @@ def parts():
 
     # list to hold the values for the query
     parameters = []
+
+    # adding the values to the query if they are not None
     if brand:
         sql += " AND manufacturers.name = ?"
         parameters.append(brand)
@@ -64,6 +67,23 @@ def parts():
     if category:
         sql += " AND category = ?"
         parameters.append(category)
+
+    # adding the sort values to the query if they are not None
+    if sort:
+        if sort == "price_asc":
+            sql += " ORDER BY price ASC"
+        elif sort == "price_desc":
+            sql += " ORDER BY price DESC"
+        elif sort == "name_asc":
+            sql += " ORDER BY 'PC-parts'.name ASC"
+        elif sort == "name_desc":
+            sql += " ORDER BY 'PC-parts'.name DESC"
+        elif sort == "rating":
+            sql += " ORDER BY rating DESC"
+        elif sort == "release_year_asc":
+            sql += " ORDER BY releaseYear ASC"
+        elif sort == "release_year_desc":
+            sql += " ORDER BY releaseYear DESC"
 
     results = query_db(sql, tuple(parameters))
     return render_template('parts.html',results=results)
@@ -123,9 +143,9 @@ def search():
         SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
         FROM "PC-parts"
         join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
-        WHERE "PC-parts".name LIKE ?
+        WHERE "PC-parts".name LIKE ? or "manufacturers".name LIKE ? or category LIKE ?
         """
-        results = query_db(sql, ['%' + search_term + '%'])
+        results = query_db(sql, ['%' + search_term + '%', '%' + search_term + '%', '%' + search_term + '%'])
     return render_template('search.html', results=results)
 
 

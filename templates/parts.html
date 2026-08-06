@@ -5,7 +5,7 @@
         <form class="search-bar" method="post" action="/search">
             <label for="search">Search for a part:</label>
             <input type="text" id="search" name="search">
-           <input  type="submit" value="Search">
+           <input class="button" type="submit" value="Search">
         </form>
 
     </div>
@@ -51,7 +51,25 @@
     </select>
     </div>
 
-    <input class="search filter" type="submit" value="filter results">
+    <div class="filter-sort">
+    <label for="filter-sort">Sort By:</label>
+    <select name="sort">
+        <option value="">Default</option>
+        <option value="price_asc">Price: Low to High</option>
+        <option value="price_desc">Price: High to Low</option>
+        <option value="name_asc">Name: A-Z</option>
+        <option value="name_desc">Name: Z-A</option>
+        <option value="rating">Rating</option>
+        <option value="release_year_asc">Release Year (Oldest First)</option>
+        <option value="release_year_desc">Release Year (Newest First)</option>
+    </select>
+    </div>
+
+
+
+
+
+    <input class="button" type="submit" value="filter results">
  </form>
 
 
@@ -66,6 +84,6 @@
         </div>
     </a>
     {% else %}
-        <p>No parts found.</p>
+        <p>No products match your selected filters. Try changing your category, brand, or price tier.</p>
     {% endfor %}
 {% endblock %}
