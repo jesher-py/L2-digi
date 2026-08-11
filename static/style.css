@@ -1,16 +1,25 @@
 /* header, navigation bar, and dropdown menu styles */
 header {
+    background-color: #1F2937;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(245, 241, 241);
 }
 
+/* main backround color */
+body{
+    color: rgb(0, 0, 0);
+    background-color: rgb(252, 250, 255);
+}
+/* link styles */
 a{
     text-decoration: none;
     color: black;
 }
 
+/* navigation bar styles */
 nav ul{
     display: flex;
     gap: 20px;
@@ -22,7 +31,7 @@ nav {
 }
 
 nav ul li a {
-    color: rgb(19, 18, 18);
+    color: rgb(248, 244, 244);
     text-decoration: none;
 }
 
@@ -45,23 +54,19 @@ nav ul li a {
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
-    text-decoration: none;
     display: block;
 }
 
 img {
-    width: 200px;
+    width: 100%;
     height: 200px;
     object-fit: contain;
+    margin-bottom: 0px;
 }
 
-body {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
 
     
-/* Style the search input field */
+/* Style the search, select, label and input */
 
 .search-bar {
     margin-bottom: 10px;
@@ -80,10 +85,29 @@ input[type="text"] {
     vertical-align: top;
 }
 
-input[type="submit"] {
-    width: 200px;
+/* sumbit button style */
+input[type="submit"], .button {
+    width: auto;
     height: 50px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
     font-size: 30px;
+    display: inline-block;
+    background-color: rgb(0, 0, 1);
+    color: white;
+    cursor: pointer;
+    vertical-align: center;
+}
+
+.button{ 
+    height: auto;
+    text-align: center;
+}
+
+input[type="submit"]:hover, .button:hover {
+    background-color: rgb(47, 2, 103);
+
 }
 
 select {
@@ -104,8 +128,8 @@ select {
 }
 
 .part-image {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 400px;
     object-fit: contain;
     margin-bottom: 80px;
 }
@@ -121,14 +145,33 @@ select {
     display: inline-block;
     text-decoration: none;
     color: black;
-    margin: 10px;
+    background-color: white;
+    margin: 5px;
     padding: 15px;
     text-align: center;
-    border: 1px solid black;
     width: 250px;
-    height: 380px;
+    height: 400px;
     object-fit: cover;
     vertical-align: top;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add a hover effect to the carded parts */
+.carded-parts:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.part-category{
+    background-color: rgb(217, 191, 250);
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.part-price, .part-category{
+    color: rgb(61, 0, 175);
 }
 
 .filter-options {
@@ -137,15 +180,3 @@ select {
     padding: 40px;
 }
 
-
-
-.view-all-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    text-decoration: none;
-    color: white;
-    background-color: black;
-    border-radius: 5px;
-    margin-top: 20px;
-}

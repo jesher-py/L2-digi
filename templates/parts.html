@@ -69,18 +69,20 @@
 
 
 
-    <input class="button" type="submit" value="filter results">
+    <input type="submit" value="filter results">
  </form>
 
 
-<!-- for loop to display all the parts, with the name, brand, price, category -->
+<!-- for loop to display all the parts -->
 
     {% for part in results %}
     <a href="/detail/{{ part[0] }}" class="part-link">
         <div class="carded-parts">
             <img src="{{ url_for('static', filename=part[1]) }}" alt="{{ part[2] }}">
-            <h1>{{ part[2] }}</h1>
-            <h2>{{ part[3] }} | {{ part[4] }} | ${{ part[5] }}</h2>
+            <h2>{{ part[2] }}</h2> <!-- name -->
+            <h3>{{ part[4] }}</h3> <!-- brand -->
+            <h3 class="part-category">{{ part[3] }}</h3> <!-- category -->
+            <h3 class="part-price">${{ part[5] }}</h3> <!-- price -->
         </div>
     </a>
     {% else %}
