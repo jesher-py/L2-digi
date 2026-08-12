@@ -27,9 +27,10 @@ def query_db(sql, args=(), one=False):
 def home():
     # home page- will display th latest PC parts in the database, name, brand, price and image
     sql = """ 
-    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
     FROM "PC-parts"
     join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
+    join category ON "PC-parts".category_id = category.id
     WHERE rating >= 5
     ORDER BY releaseYear DESC
     """
@@ -47,9 +48,10 @@ def parts():
 
     # parts page- will display all the PC parts in the database
     # query to select all the PC parts from the database, name, brand, category and price
-    sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+    sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
              FROM "PC-parts" 
-             join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id 
+             join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
+             join category ON "PC-parts".category_id = category.id 
              WHERE 1=1"""
     
 
@@ -96,10 +98,11 @@ def cpu():
     # CPU page- will display all the CPUs in the database
     # query to select all the CPUs from the database, id, name, brand, price, category and release year
 
-    sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+    sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
              FROM "PC-parts" 
              join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
-             WHERE category = 'CPU'
+             join category ON "PC-parts".category_id = category.id
+             WHERE category.name = 'CPU'
     """
 
     results = query_db(sql)
@@ -111,10 +114,11 @@ def gpu():
     # query to select all the GPUs from the database, id, name, brand, price, category and release year
 
     sql = """ 
-    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
     FROM "PC-parts" 
     join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
-    WHERE category = 'GPU' 
+    join category ON "PC-parts".category_id = category.id
+    WHERE category.name = 'GPU' 
     """
 
     results = query_db(sql)
@@ -126,9 +130,13 @@ def ram():
     # query to select all the RAMs from the database, id, name, brand, price, category and release year
 
     sql = """ 
-    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+    SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
     FROM "PC-parts" 
-    join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id WHERE category = 'RAM' """
+    join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
+    join category ON "PC-parts".category_id = category.id
+    WHERE category.name = 'RAM'
+     """
+    
     results = query_db(sql)
     return render_template('parts.html',results=results)
 
@@ -140,10 +148,11 @@ def search():
     if request.method == 'POST':
         search_term = request.form['search']
         sql = """
-        SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, category, price
+        SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
         FROM "PC-parts"
         join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
-        WHERE "PC-parts".name LIKE ? or "manufacturers".name LIKE ? or category LIKE ?
+        join category ON "PC-parts".category_id = category.id
+        WHERE "PC-parts".name LIKE ? or "manufacturers".name LIKE ? or "category".name LIKE ?
         """
         results = query_db(sql, ['%' + search_term + '%', '%' + search_term + '%', '%' + search_term + '%'])
     return render_template('search.html', results=results)
@@ -156,9 +165,10 @@ def detail(id):
     # query to select the details of a specific part from the database, name, brand, price and image, specifications, and description
 
         sql = """ 
-        SELECT "PC-parts".name, "manufacturers".name as brand, category, price, specs, description, price_tier, rating, releaseYear, imgURL, stockQuantity, compatibility
+        SELECT "PC-parts".name, "manufacturers".name as brand, "category".name as category, price, specs, description, price_tier, rating, releaseYear, imgURL, stockQuantity, compatibility
         FROM "PC-parts" 
         join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
+        join category ON "PC-parts".category_id = category.id
         WHERE "PC-parts".id = ? 
         """
         results = query_db(sql, [id], one=True)
