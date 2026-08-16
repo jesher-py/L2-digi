@@ -1,4 +1,4 @@
-/* header, navigation bar, and dropdown menu styles */
+/* header, navigation bar, img, and dropdown menu styles */
 header {
     background-color: #1F2937;
     color: white;
@@ -65,8 +65,8 @@ img {
 }
 
 
-    
-/* Style the search, select, label and input */
+
+/* Style the search, select, label and input and buttons filters */
 
 .search-bar {
     margin-bottom: 10px;
@@ -100,14 +100,16 @@ input[type="submit"], .button {
     vertical-align: center;
 }
 
-.button{ 
+.button{
+    display: inline-block;
+    vertical-align: center;
     height: auto;
-    text-align: center;
+    text-align: right;
 }
 
 input[type="submit"]:hover, .button:hover {
     background-color: rgb(47, 2, 103);
-
+    
 }
 
 select {
@@ -115,9 +117,33 @@ select {
     width: 160px;
     height: 50px;
     font-size: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin: 10px;
+    border-radius: 5px;
 }
+
+.filter-options {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 40px;
+}
+
+
+.filter-category {
+    padding-left: 8px;
+}
+
+.filter-brand {
+    padding-left: 44px;
+}
+
+.filter-sort {
+padding-left: 25px;
+}
+
+.filter-button{
+    display: block;
+}
+
 
 /* Style the detail page information sections */
 .detail-info{
@@ -132,15 +158,49 @@ select {
     height: 400px;
     object-fit: contain;
     margin-bottom: 80px;
+    margin-top: 20px;
+    box-shadow: 8px 0 6px -6px rgba(0, 0, 0, 0.5);
+    
 }
 
+.stock {
+    color: rgb(20, 172, 0);
+}
+
+.key-details {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* homepage slogan and featured items */
 .slogan {
-    font-size: 40px;
+    display: inline-block;
+    vertical-align: center;
+    font-size: 30px;
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 10px;
+    margin-right: 200px;
 }
 
+.featured {
+    font-size: 30px;
+    padding: 10px 20px 20px 20px;
+}
+
+/* style for carded parts */
 .carded-parts {
     display: inline-block;
     text-decoration: none;
@@ -156,13 +216,7 @@ select {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Add a hover effect to the carded parts */
-.carded-parts:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.part-category{
+.part-category {
     background-color: rgb(217, 191, 250);
     text-align: center;
     width: 50%;
@@ -174,9 +228,14 @@ select {
     color: rgb(61, 0, 175);
 }
 
-.filter-options {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    padding: 40px;
+
+
+
+
+/* Add a hover effect to the carded parts */
+.carded-parts:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
 

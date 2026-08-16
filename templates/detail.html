@@ -7,11 +7,7 @@
      <div class="detail-info">
         <img class="part-image" src="{{ url_for('static', filename=part[9]) }}" alt="{{ part[0]}}">
         <h2>Specifications</h2>
-        <h3>Release Year: {{ part[8] }}</h3>
-        <h3> price tier: {{ part[6] }} </h3>
-        <h3> rating: {{ part[7] }}</h3>
         <p>{{ part[4] }}</p>
-        
         <h3>Compatible with: {{ part[11] }}</h3>
         <h3>Description</h3>
         <p>{{ part[5] }}</p>
@@ -19,11 +15,20 @@
     
     <!-- second column for the details: name, brand, category, price and stock -->
     <div class="detail-info">
-        <h1>{{ part[0] }}</h1>
-        <h1>by {{ part[1] }}</h1>
-        <h2> {{ part[2] }}</h2> 
-        <h2> ${{ part[3] }}</h2>
-        <h2>Stock Quantity: {{ part[10] }}</h2>
+        <h1>{{ part[0] }}</h1> <!-- name-->
+        <h1>by {{ part[1] }}</h1> <!-- brand-->
+        <h2> {{ part[2] }}</h2> <!-- category-->
+        <h2> ${{ part[3] }}</h2> <!-- price-->
+        <h2 class="stock">Stock Quantity: {{ part[10] }}</h2> <!-- stock-->
+
+        <div class="key-details">
+            <h2>Key Details</h2>
+            <h3>Release Year: {{ part[8] }}</h3>
+            <h3> price tier: {{ part[6] }} </h3>
+            <h3> rating: {{ part[7] }}</h3>
+        </div>
     </div>
+
+
 </div>
 {% endblock %}
