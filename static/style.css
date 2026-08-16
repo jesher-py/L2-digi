@@ -71,6 +71,7 @@ img {
 .search-bar {
     margin-bottom: 10px;
     margin-top: 60px;
+    width: 70%;
 }
 
 label{
@@ -79,10 +80,11 @@ label{
 }
 
 input[type="text"] {
-    width: 500px;
+    width: 400px;
     height: 45px;
     font-size: 20px;
     vertical-align: top;
+    border-radius: 25px;
 }
 
 /* sumbit button style */
@@ -100,6 +102,12 @@ input[type="submit"], .button {
     vertical-align: center;
 }
 
+.home-search-bar{
+    display: block;
+    margin-top: 50px;
+}
+
+
 .button{
     display: inline-block;
     vertical-align: center;
@@ -109,7 +117,6 @@ input[type="submit"], .button {
 
 input[type="submit"]:hover, .button:hover {
     background-color: rgb(47, 2, 103);
-    
 }
 
 select {
@@ -175,9 +182,6 @@ padding-left: 25px;
     border: 1px solid black;
     border-radius: 10px;
 }
-
-
-
 
 
 
