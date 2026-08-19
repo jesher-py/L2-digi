@@ -79,31 +79,47 @@ img {
 
 
 /* Style the search, select, label and input and buttons filters */
+.home-search-bar{
+    margin-top: 50px;
+}
 
 .search-bar {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 10px;
     margin-top: 60px;
-    width: 70%;
+    gap: 10px;
+    padding: 20px;
 }
 
 label{
     display: inline-block;
     font-size: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 input[type="text"] {
-    width: 400px;
-    height: 45px;
-    font-size: 20px;
+    width: 50%;
+    height: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
     vertical-align: top;
-    border-radius: 5px;
+    border-radius: 30px;
+    font-size: 20px;
 }
+
+input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #6118c6;
+    box-shadow: 0 0 5px #6118c6;
+}
+
 
 /* sumbit button style */
 input[type="submit"], .button {
     width: auto;
+    box-sizing: border-box;
     height: 50px;
     padding: 10px 20px;
     border-radius: 5px;
@@ -117,10 +133,6 @@ input[type="submit"], .button {
     transition: background-color 0.3s ease;
 }
 
-.home-search-bar{
-    display: block;
-    margin-top: 50px;
-}
 
 
 .button{
@@ -135,7 +147,7 @@ input[type="submit"]:hover, .button:hover {
     transition: background-color 0.3s ease;
 
 }
-
+/* filter select styles */
 select {
     display: inline-block;
     width: 160px;
@@ -154,7 +166,16 @@ select {
 select:hover {
     background-color: rgb(243, 235, 255);
     transition: background-color 0.5s ease;
+    cursor: pointer;
 }
+
+.filter-brand, .filter-category, .filter-price-tier, .filter-sort {
+    display: inline-block;
+    padding-right: 120px;
+
+}
+
+
 
 .filter-category {
     padding-left: 8px;
@@ -168,10 +189,10 @@ select:hover {
 padding-left: 25px;
 }
 
-.filter-button{
-    display: block;
-}
 
+div-filter {
+    color: blue;
+}
 
 /* Style the detail page information sections */
 .detail-info{
@@ -179,6 +200,7 @@ padding-left: 25px;
     vertical-align: top;
     padding: 10px;
     margin-bottom: 10px;
+    margin-left: 60px;
 }
 
 .part-image {
