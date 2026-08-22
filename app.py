@@ -9,8 +9,7 @@ app = Flask(__name__)
 
 #the path and file name for the database
 
-
-# cool function to automatically connect and query
+# cool function to automatically connect and run SQL query
 def query_db(sql, args=(), one=False):
     '''connecct and query- will return one item if one=true and can accept arguments as tuple'''
     db = sqlite3.connect(DATABASE)
@@ -21,8 +20,8 @@ def query_db(sql, args=(), one=False):
     db.close()
     return (results[0] if results else None) if one else results
 
-
-# routes go here
+# routes go here:
+# homepage
 @app.route('/')
 def home():
     # home page- will display th latest PC parts in the database, name, brand, price and image
@@ -37,10 +36,11 @@ def home():
     results = query_db(sql)
     return render_template('home.html',results=results)
 
+#all parts page
 @app.route('/parts')
 def parts():
 
-    #getting values from forms and passing them to the query
+    #getting values selected by the user from forms
     brand = request.args.get('brand')
     price_point = request.args.get('price_tier')
     category = request.args.get('category')
@@ -48,17 +48,19 @@ def parts():
 
     # parts page- will display all the PC parts in the database
     # query to select all the PC parts from the database, name, brand, category and price
+
+    # join PC-parts table with manufacturers and category table to didsplay names instead of IDs
     sql = """ SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
              FROM "PC-parts" 
              join manufacturers ON "PC-parts".manufacturers_id = manufacturers.id
              join category ON "PC-parts".category_id = category.id 
              WHERE 1=1"""
     
-
+    # filters
     # list to hold the values for the query
     parameters = []
 
-    # adding the values to the query if they are not None
+    # adding the values selected to the query if they are not None
     if brand:
         sql += " AND manufacturers.name = ?"
         parameters.append(brand)
@@ -70,7 +72,7 @@ def parts():
         sql += " AND category = ?"
         parameters.append(category)
 
-    # adding the sort values to the query if they are not None
+    # change the order of parts using SQL
     if sort:
         if sort == "price_asc":
             sql += " ORDER BY price ASC"
@@ -90,9 +92,6 @@ def parts():
     results = query_db(sql, tuple(parameters))
     return render_template('parts.html',results=results)
 
-
-
-
 @app.route('/parts/cpu')
 def cpu():
     # CPU page- will display all the CPUs in the database
@@ -111,7 +110,7 @@ def cpu():
 @app.route('/parts/gpu')
 def gpu():
     # GPU page- will display all the GPUs in the database
-    # query to select all the GPUs from the database, id, name, brand, price, category and release year
+    # query to select all the GPUs from the database, id, name, brand, price, category and the image
 
     sql = """ 
     SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
@@ -127,7 +126,7 @@ def gpu():
 @app.route('/parts/ram')
 def ram():
     # RAM page- will display all the RAMs in the database
-    # query to select all the RAMs from the database, id, name, brand, price, category and release year
+    # query to select all the RAMs from the database, id, name, brand, price, category and the image
 
     sql = """ 
     SELECT "PC-parts".id, "PC-parts".imgURL, "PC-parts".name, "manufacturers".name as brand, "category".name as category, price
@@ -139,7 +138,6 @@ def ram():
     
     results = query_db(sql)
     return render_template('parts.html',results=results)
-
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -156,8 +154,6 @@ def search():
         """
         results = query_db(sql, ['%' + search_term + '%', '%' + search_term + '%', '%' + search_term + '%'])
     return render_template('search.html', results=results)
-
-
 
 @app.route('/detail/<int:id>')
 def detail(id):
@@ -183,7 +179,6 @@ def about():
 def contact():  
     # contact page- will display contact information for the creator
     return render_template('contact.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)

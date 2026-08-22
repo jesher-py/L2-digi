@@ -8,7 +8,18 @@ header {
     border-bottom: 1px solid rgb(245, 241, 241);
 }
 
-/* main backround color */
+img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 0px;
+}
+
+/* main colors */
+.title{
+    color: white
+}
+
 body{
     color: rgb(0, 0, 0);
     background-color: rgb(252, 250, 255);
@@ -17,6 +28,10 @@ body{
 a{
     text-decoration: none;
 
+}
+
+a:hover{
+    cursor: pointer;
 }
 
 /* navigation bar styles */
@@ -45,6 +60,7 @@ nav ul li a {
     margin-right: 10px;
 }
 
+/* category dropdown styling*/
 .dropdown { 
     position: relative; 
 }
@@ -53,30 +69,28 @@ nav ul li a {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 160px;
+    min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(151, 151, 151);
+    transition: background-color 0.5s ease;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
     transition: background-color 0.5s ease;
-
 }
 
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 14px;
     display: block;
+    width: 130px;
+    border-radius: 5px;
 }
-
-img {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 0px;
-}
-
-
 
 /* Style the search, select, label and input and buttons filters */
 .home-search-bar{
@@ -97,6 +111,7 @@ label{
     display: inline-block;
     font-size: 30px;
     margin-bottom: 10px;
+    color:rgb(18, 0, 66)
 }
 
 input[type="text"] {
@@ -109,14 +124,14 @@ input[type="text"] {
     font-size: 20px;
 }
 
+/* when the user clicks on the search bar: */
 input[type="text"]:focus {
     outline: none;
     border: 2px solid #6118c6;
     box-shadow: 0 0 5px #6118c6;
 }
 
-
-/* sumbit button style */
+/* sumbit button styles */
 input[type="submit"], .button {
     width: auto;
     box-sizing: border-box;
@@ -133,8 +148,6 @@ input[type="submit"], .button {
     transition: background-color 0.3s ease;
 }
 
-
-
 .button{
     display: inline-block;
     vertical-align: center;
@@ -147,6 +160,7 @@ input[type="submit"]:hover, .button:hover {
     transition: background-color 0.3s ease;
 
 }
+
 /* filter select styles */
 select {
     display: inline-block;
@@ -175,8 +189,6 @@ select:hover {
 
 }
 
-
-
 .filter-category {
     padding-left: 8px;
 }
@@ -189,11 +201,6 @@ select:hover {
 padding-left: 25px;
 }
 
-
-div-filter {
-    color: blue;
-}
-
 /* Style the detail page information sections */
 .detail-info{
     display: inline-block;
@@ -203,6 +210,7 @@ div-filter {
     margin-left: 60px;
 }
 
+/* product page image*/
 .part-image {
     width: 100%;
     height: 400px;
@@ -227,10 +235,6 @@ div-filter {
 }
 
 
-
-
-
-
 /* homepage slogan and featured items */
 .slogan {
     display: inline-block;
@@ -247,7 +251,7 @@ div-filter {
     padding: 10px 20px 20px 20px;
 }
 
-/* style for carded parts */
+/* styling for carded parts */
 .carded-parts {
     display: inline-block;
     text-decoration: none;
@@ -274,9 +278,6 @@ div-filter {
 .part-price, .part-category{
     color: rgb(61, 0, 175);
 }
-
-
-
 
 
 /* Add a hover effect to the carded parts */

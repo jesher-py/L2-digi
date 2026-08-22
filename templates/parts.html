@@ -1,19 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>All Parts</h1>
-    <!-- search bar -->
+    <!-- search bar form-->
         <form class="search-bar" method="post" action="/search">
             <label for="search">Search for a part:</label>
-            <input type="text" id="search" name="search">
+            <input type="text" id="search" name="search" placeholder="Type a part or brand...">
            <input class="button" type="submit" value="Search">
         </form>
 
     </div>
 
-
-    
-
-<!-- filter options using form-->
+<!-- filter and sort options using form-->
  <form class="filter-options" method="get" action="/parts">
     <h2>Filters</h2>
     
@@ -41,6 +38,7 @@
     </select>
     </div>
 
+ 
     <div class="filter-price-tier">
     <label for="filter-price-tier">Price Tier:</label>
     <select name="price_tier">
@@ -65,19 +63,16 @@
     </select>
     </div>
 
-
-
-
-
+    <!-- submit button to filter results-->
     <input class="filter-button" type="submit" value="filter results">
  </form>
 
-
 <!-- for loop to display all the parts -->
-
+<!-- displays each part as a clickable card -->
     {% for part in results %}
     <a href="/detail/{{ part[0] }}" class="part-link">
         <div class="carded-parts">
+            <!-- loads the image stored in database from static folder-->
             <img src="{{ url_for('static', filename=part[1]) }}" alt="{{ part[2] }}">
             <h2>{{ part[2] }}</h2> <!-- name -->
             <h3>{{ part[4] }}</h3> <!-- brand -->
